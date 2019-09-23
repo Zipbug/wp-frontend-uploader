@@ -74,7 +74,13 @@ $obj = get_post( $fu_result['post_id'] );
       <?php
       foreach($meta as $key=>$val)
       {
-          echo $key . ' : ' . $val[0] . '<br/>';
+        if (strpos($string2, '_') === 0) {
+          echo "";
+        }
+        else{
+          $newKey = preg_replace('/\s+/', '_', $key);
+          echo  '<h4><span style="text-transform:uppercase;">'.$newKey. '</span> : ' . $val[0] . '</h4>';
+        }
       }
       ?>
     </td>
@@ -108,8 +114,6 @@ $obj = get_post( $fu_result['post_id'] );
     <tr>
       <td valign="top" style="vertical-align: top;">
        <?php echo wp_get_attachment_image( $media_id, 'large' ); ?>
-       <p><?php echo esc_html( $obj->post_title ); ?></p>
-       <?php echo wp_kses_post( wpautop( $obj->post_content ) ); ?>
       </td>
     </tr>
   </table>

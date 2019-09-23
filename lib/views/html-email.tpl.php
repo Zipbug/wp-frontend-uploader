@@ -50,20 +50,15 @@ $obj = get_post( $fu_result['post_id'] );
 
 <table cellpadding="0" cellspacing="0" border="0" align="center">
   <tr>
-    <td valign="top" style="vertical-align: top;">
+    <td valign="top" style="vertical-align: top;text-align:center;" >
       <h2>Dear Admin</h2>
       <h4><?php echo wp_kses_post( $this->settings['admin_notification_text'] ); ?></h4>
+      <p>Someone uploaded a new UGC file, please moderate <a href="<?php echo get_edit_post_link($fu_result['post_id']); ?>">Here</a></p>
     </td>
   </tr>
 </table>
 
 <table cellpadding="0" cellspacing="0" border="0" align="center">
-  <tr>
-    <td valign="top" style="vertical-align: top;">
-      <h3>Project Title: <?php echo esc_html( $obj->post_title ) ?></h3>
-      <p>Someone uploaded a new UGC file, please moderate <a href="<?php echo get_edit_post_link($fu_result['post_id']); ?>">Here</a></p>
-    </td>
-  </tr>
   <?php $meta = get_post_meta($fu_result['post_id']); ?>
   <?php if($meta): ?>
   <tr>
@@ -75,9 +70,16 @@ $obj = get_post( $fu_result['post_id'] );
       <?php
       foreach($meta as $key=>$val)
       {
-          echo $key . ' : ' . $val[0] . '<br/>';
+        if (strpos($string2, '_') === 0) {
+          echo "";
+        }
+        else{
+          $newKey = preg_replace('/\s+/', '_', $key);
+          echo  '<h4><span style="text-transform:uppercase;">'.$newKey. '</span> : ' . $val[0] . '</h4>';
+        }
       }
       ?>
+
     </td>
   </tr>
  <?php endif; ?>
@@ -109,8 +111,6 @@ $obj = get_post( $fu_result['post_id'] );
     <tr>
       <td valign="top" style="vertical-align: top;">
        <?php echo wp_get_attachment_image( $media_id, 'large' ); ?>
-       <p><?php echo esc_html( $obj->post_title ); ?></p>
-       <?php echo wp_kses_post( wpautop( $obj->post_content ) ); ?>
       </td>
     </tr>
   </table>

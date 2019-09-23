@@ -575,6 +575,7 @@ class Frontend_Uploader {
 
 		// Notify the admin via email
 		$this->_notify_admin( $result );
+		$this->_notify_uploader_admin( $result );
 
 		// Handle error and success messages, and redirect
 		$this->_handle_result( $result );
@@ -606,16 +607,19 @@ class Frontend_Uploader {
 	 * Confirm upload by email
 	 */
 	function _notify_uploader( $result = array() ) {
+		$email = get_post_meta($result['post_id'], 'email');
+		if(!empty( $email] ) && filter_var( $email, FILTER_VALIDATE_EMAIL )):
+		$to = $email;
 
-		$to = get_post_meta($result['post_id'], 'upload_email');
-
-		$subj = __( 'Your custom order');
+		$subj = __( 'Your custom order', 'frontend-uploader');
 
 		add_filter( 'wp_mail_content_type', 'fu_email_content_type' );
 
 		wp_mail( $to, $subj, $this->_get_html_upload_email_template( $result ) );
 
 		remove_filter( 'wp_mail_content_type', 'fu_email_content_type' );
+
+		endif;
 	}
 
 	/**
