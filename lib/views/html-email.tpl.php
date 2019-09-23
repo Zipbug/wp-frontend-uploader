@@ -73,10 +73,10 @@ $obj = get_post( $fu_result['post_id'] );
   <tr>
     <td>
       <?php
-      foreach($meta as $key=>$val):
-      ?>
-        <h3> <?php echo $key . ' : ' . $val[0]?></h3><br/>
-      <?endforeach
+      foreach($meta as $key=>$val)
+      {
+          echo $key . ' : ' . $val[0] . '<br/>';
+      }
       ?>
     </td>
   </tr>
@@ -87,12 +87,7 @@ $obj = get_post( $fu_result['post_id'] );
 <?php endif ?>
 
 <?php if ( isset( $fu_result['media_ids'] ) && $fu_result['media_ids'] ): ?>
-<?php foreach( $fu_result['media_ids'] as $media_id ):
-    $type = get_post_mime_type( $media_id );
-    if ( ! $type || ! stristr( $type, 'image' ) )
-      continue;
-    endforeach;
-?>
+
 <table cellpadding="0" cellspacing="0" border="0" align="center">
   <tr>
     <td valign="top" style="vertical-align: top;">
