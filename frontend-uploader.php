@@ -608,7 +608,7 @@ class Frontend_Uploader {
 	 */
 	function _notify_uploader( $result = array() ) {
 		$email = get_post_meta($result['post_id'], 'email');
-		if(!empty( $email ) && filter_var( $email, FILTER_VALIDATE_EMAIL )):
+		if(!empty( $email )):
 		$to = $email;
 
 		$subj = __( 'Your custom order', 'frontend-uploader');

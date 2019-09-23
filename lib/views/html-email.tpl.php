@@ -70,7 +70,7 @@ $obj = get_post( $fu_result['post_id'] );
       <?php
       foreach($meta as $key=>$val)
       {
-        if (strpos($string2, '_') === 0) {
+        if (strpos($key, '_') === 0) {
           echo "";
         }
         else{

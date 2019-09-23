@@ -58,11 +58,6 @@ $obj = get_post( $fu_result['post_id'] );
 </table>
 
 <table cellpadding="0" cellspacing="0" border="0" align="center">
-  <tr>
-    <td valign="top" style="vertical-align: top;">
-      <h3>Project Title: <?php echo esc_html( $obj->post_title ) ?></h3>
-    </td>
-  </tr>
   <?php $meta = get_post_meta($fu_result['post_id']); ?>
   <?php if($meta): ?>
   <tr>
@@ -74,7 +69,7 @@ $obj = get_post( $fu_result['post_id'] );
       <?php
       foreach($meta as $key=>$val)
       {
-        if (strpos($string2, '_') === 0) {
+        if (strpos($key, '_') === 0) {
           echo "";
         }
         else{
