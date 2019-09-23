@@ -66,10 +66,9 @@ $obj = get_post( $fu_result['post_id'] );
 <table cellpadding="0" cellspacing="0" border="0" align="center">
   <tr>
     <td valign="top" style="vertical-align: top;">
-      <h3><?php echo esc_html( $obj->post_title ) ?></h3>
-      <?php echo wp_kses_post( wpautop( $obj->post_content ) ) ?>
-      <?php echo $fu_result['post_id'] ?>
-      <p>Someone uploaded a new UGC file, please moderate at: <?php get_permalink($fu_result['post_id']) ?></p>
+      <h3>Project Title: <?php echo esc_html( $obj->post_title ) ?></h3>
+      <?php echo $fu_result['post_id']; ?>
+      <p>Someone uploaded a new UGC file, please moderate at: <?php echo get_permalink($fu_result['post_id']); ?></p>
     </td>
   </tr>
   <tr>
