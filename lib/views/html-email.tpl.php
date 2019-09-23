@@ -67,11 +67,10 @@ $obj = get_post( $fu_result['post_id'] );
   <tr>
     <td valign="top" style="vertical-align: top;">
       <h3>Project Title: <?php echo esc_html( $obj->post_title ) ?></h3>
-      <?php echo $fu_result['post_id']; ?>
       <p>Someone uploaded a new UGC file, please moderate at: <a href="<?php echo get_edit_post_link($fu_result['post_id']); ?>"><?php echo get_edit_post_link($fu_result['post_id']); ?></a></p>
     </td>
   </tr>
-  <?php $meta = get_post_meta( $fu_result['post_id']; ); ?>
+  <?php $meta = get_post_meta($fu_result['post_id']); ?>
   <?php if($meta): ?>
   <tr>
     <td>Here is the submitted data</td>
