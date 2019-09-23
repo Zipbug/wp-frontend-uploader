@@ -72,7 +72,7 @@ $obj = get_post( $fu_result['post_id'] );
     </td>
   </tr>
   <?php $meta = get_post_meta( $fu_result['post_id']; ); ?>
-  <?php if(meta):?>
+  <?php if($meta): ?>
   <tr>
     <td>Here is the submitted data</td>
 
