@@ -600,11 +600,11 @@ class Frontend_Uploader {
 
 		$email = get_post_meta($result['post_id'], 'email');
 		if(!empty( $email )):
-		$confirm_subj = __( 'Your custom order', 'frontend-uploader');
+			$confirm_subj = __( 'Your custom order', 'frontend-uploader');
 
-		wp_mail( $email, $confirm_subj, $this->_get_html_upload_email_template( $result ) );
+			wp_mail( $email, $confirm_subj, $this->_get_html_upload_email_template( $result ) );
 
-
+		endif;
 		remove_filter( 'wp_mail_content_type', 'fu_email_content_type' );
 
 	}
