@@ -100,16 +100,6 @@ $obj = get_post( $fu_result['post_id'] );
 
     $obj = get_post( $media_id );
   ?>
-
-<table cellpadding="0" cellspacing="0" border="0" align="center">
-  <tr>
-    <td valign="top" style="vertical-align: top;">
-      <h2>Submitted Images</h2>
-    </td>
-  </tr>
-</table>
-
-
   <table cellpadding="0" cellspacing="0" border="0" align="center">
     <tr>
       <td valign="top" style="vertical-align: top;">
