@@ -68,28 +68,21 @@ $obj = get_post( $fu_result['post_id'] );
     <td valign="top" style="vertical-align: top;">
       <h3>Project Title: <?php echo esc_html( $obj->post_title ) ?></h3>
       <?php echo $fu_result['post_id']; ?>
-      <p>Someone uploaded a new UGC file, please moderate at: <?php echo get_permalink($fu_result['post_id']); ?></p>
+      <p>Someone uploaded a new UGC file, please moderate at: <a href="<?php echo get_edit_post_link($fu_result['post_id']); ?>"><?php echo get_edit_post_link($fu_result['post_id']); ?></a></p>
     </td>
   </tr>
+  <?php $meta = get_post_meta( $fu_result['post_id']; ); ?>
+  <?php if(meta):?>
   <tr>
     <td>Here is the submitted data</td>
 
   </tr>
   <tr>
     <td>
-      <?php
-
-        $fields = get_fields($fu_result['post_id']);
-
-        if( $fields ): ?>
-            <ul>
-                <?php foreach( $fields as $name => $value ): ?>
-                    <li><b><?php echo $name; ?></b> <?php echo $value; ?></li>
-                <?php endforeach; ?>
-            </ul>
-        <?php endif; ?>
+      <?php echo $meta; ?>
     </td>
   </tr>
+ <?php endif; ?>
 </table>
 
 
