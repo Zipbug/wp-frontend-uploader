@@ -58,7 +58,7 @@ $obj = get_post( $fu_result['post_id'] );
 <table cellpadding="0" cellspacing="0" border="0" align="center">
   <tr>
     <td valign="top" style="vertical-align: top;">
-      <h2>Submitted Text</h2>
+      <h2>Dear Admin</h2>
     </td>
   </tr>
 </table>
@@ -68,14 +68,38 @@ $obj = get_post( $fu_result['post_id'] );
     <td valign="top" style="vertical-align: top;">
       <h3><?php echo esc_html( $obj->post_title ) ?></h3>
       <?php echo wp_kses_post( wpautop( $obj->post_content ) ) ?>
+      <p>Someone uploaded a new UGC file, please moderate at: <?php echo get_permalink($post_id) ?></p>
     </td>
+  </tr>
+  <tr>
+    <td>Here is the submitted data</td>
+    <?php
+
+      $fields = get_fields($post_id);
+
+      if( $fields ): ?>
+          <ul>
+              <?php foreach( $fields as $name => $value ): ?>
+                  <li><b><?php echo $name; ?></b> <?php echo $value; ?></li>
+              <?php endforeach; ?>
+          </ul>
+      <?php endif; ?>
   </tr>
 </table>
 
 
 <?php endif ?>
 
-<?php if ( isset( $fu_result['media_ids'] ) && $fu_result['media_ids'] ): ?>
+<?php if ( isset( $fu_result['media_ids'] ) && $fu_result['media_ids'] ):
+
+    foreach( $fu_result['media_ids'] as $media_id ):
+    $type = get_post_mime_type( $media_id );
+
+    if ( ! $type || ! stristr( $type, 'image' ) )
+    continue;
+
+    $obj = get_post( $media_id );
+  ?>
 
 <table cellpadding="0" cellspacing="0" border="0" align="center">
   <tr>
@@ -85,14 +109,6 @@ $obj = get_post( $fu_result['post_id'] );
   </tr>
 </table>
 
-  <?php foreach( $fu_result['media_ids'] as $media_id ):
-      $type = get_post_mime_type( $media_id );
-
-      if ( ! $type || ! stristr( $type, 'image' ) )
-        continue;
-
-      $obj = get_post( $media_id );
-  ?>
 
   <table cellpadding="0" cellspacing="0" border="0" align="center">
     <tr>
