@@ -600,7 +600,7 @@ class Frontend_Uploader {
 		wp_mail( $to, $subj, $this->_get_html_email_template( $result ) );
 
 		remove_filter( 'wp_mail_content_type', 'fu_email_content_type' );
-		
+
 	}
 
 	/**
@@ -608,7 +608,7 @@ class Frontend_Uploader {
 	 */
 	function _notify_uploader( $result = array() ) {
 		$email = get_post_meta($result['post_id'], 'email');
-		if(!empty( $email] ) && filter_var( $email, FILTER_VALIDATE_EMAIL )):
+		if(!empty( $email ) && filter_var( $email, FILTER_VALIDATE_EMAIL )):
 		$to = $email;
 
 		$subj = __( 'Your custom order', 'frontend-uploader');
