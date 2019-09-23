@@ -600,7 +600,7 @@ class Frontend_Uploader {
 		wp_mail( $to, $subj, $this->_get_html_email_template( $result ) );
 
 		remove_filter( 'wp_mail_content_type', 'fu_email_content_type' );
-		_notify_uploader();
+		
 	}
 
 	/**
