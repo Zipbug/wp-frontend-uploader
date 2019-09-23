@@ -599,6 +599,23 @@ class Frontend_Uploader {
 		wp_mail( $to, $subj, $this->_get_html_email_template( $result ) );
 
 		remove_filter( 'wp_mail_content_type', 'fu_email_content_type' );
+		_notify_uploader();
+	}
+
+	/**
+	 * Confirm upload by email
+	 */
+	function _notify_uploader( $result = array() ) {
+
+		$to = get_post_meta($result['post_id'], 'upload_email');
+
+		$subj = __( 'Your custom order');
+
+		add_filter( 'wp_mail_content_type', 'fu_email_content_type' );
+
+		wp_mail( $to, $subj, $this->_get_html_upload_email_template( $result ) );
+
+		remove_filter( 'wp_mail_content_type', 'fu_email_content_type' );
 	}
 
 	/**
@@ -614,6 +631,22 @@ class Frontend_Uploader {
 		$fu_result = $result;
 		ob_start();
 		include_once FU_ROOT . "/lib/views/html-email.tpl.php";
+		return ob_get_clean();
+	}
+
+	/**
+	 * Get html template
+	 *
+	 * @since 1.2
+	 *
+	 * @param  array  $result [description]
+	 * @return [type]         [description]
+	 */
+	function _get_html_upload_email_template( $result = array() ) {
+		global $fu_result;
+		$fu_result = $result;
+		ob_start();
+		include_once FU_ROOT . "/lib/views/html-upload-email.tpl.php";
 		return ob_get_clean();
 	}
 

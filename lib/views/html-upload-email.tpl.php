@@ -51,8 +51,8 @@ $obj = get_post( $fu_result['post_id'] );
 <table cellpadding="0" cellspacing="0" border="0" align="center">
   <tr>
     <td valign="top" style="vertical-align: top;">
-      <h2>Dear Admin</h2>
-      <h4><?php echo wp_kses_post( $this->settings['admin_notification_text'] ); ?></h4>
+      <h2>Thank you!</h2>
+      <h4>Your order has been received, we will be contacting you soon. In the mean time here is your order (images not attached).</h4>
     </td>
   </tr>
 </table>
@@ -61,14 +61,12 @@ $obj = get_post( $fu_result['post_id'] );
   <tr>
     <td valign="top" style="vertical-align: top;">
       <h3>Project Title: <?php echo esc_html( $obj->post_title ) ?></h3>
-      <p>Someone uploaded a new UGC file, please moderate <a href="<?php echo get_edit_post_link($fu_result['post_id']); ?>">Here</a></p>
     </td>
   </tr>
   <?php $meta = get_post_meta($fu_result['post_id']); ?>
   <?php if($meta): ?>
   <tr>
     <td><h3>Here is the submitted data</h3></td>
-
   </tr>
   <tr>
     <td>
