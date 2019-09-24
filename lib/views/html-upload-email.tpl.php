@@ -122,12 +122,10 @@ $obj = get_post( $fu_result['post_id'] );
     	} else {
     		foreach ( $images as $attachment_id => $attachment ) {
     			echo wp_get_attachment_url( $attachment_id, 'thumbnail' );
+          echo "<br/>"
     		}
     	}
     ?>
-    <td valign="top" style="vertical-align: top;">
-      <?php print_r($media); ?>
-    </td>
   </tr>
 </table>
 <?php endif ?>
