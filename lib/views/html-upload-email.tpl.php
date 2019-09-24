@@ -4,7 +4,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>User submitted content on <?php bloginfo( 'sitename' ) ?></title>
+<title>Your Custom Order With <?php bloginfo( 'sitename' ) ?></title>
 
 <style type="text/css">
 
@@ -30,7 +30,7 @@
 <body style="width:100%; margin:0; padding:0; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;">
 
 <!-- body wrapper -->
-<table cellpadding="0" cellspacing="0" border="0" style="margin:0; padding:0; width:100%; line-height: 100% !important;">
+<table cellpadding="0" cellspacing="0" border="0" style="margin:0; padding:0; width:100%; line-height: 100% !important;background:#dbdbdb;">
   <tr>
     <td valign="top">
       <!-- edge wrapper -->
@@ -41,7 +41,7 @@
             <table cellpadding="0" cellspacing="0" border="0" align="center"  width="600" >
               <tr style="background-color:#ffffff;">
                 <td>
-                  <img style="margin:15px auto; width:150px;" src="https://carbonprintanddesign.pxpqa.com/wp-content/uploads/2019/01/logo.png" alt="Carbon Print and Design"/>
+                  <img style="margin:15px auto;width:150px;" src="https://carbonprintanddesign.pxpqa.com/wp-content/uploads/2019/01/logo.png" alt="Carbon Print and Design"/>
                 </td>
               <tr>
             </table>
@@ -58,16 +58,20 @@ $obj = get_post( $fu_result['post_id'] );
 <table cellpadding="0" cellspacing="0" border="0" align="center">
   <tr>
     <td valign="top" style="vertical-align: top;text-align:center;" >
-      <h2>Thank you!</h2>
-      <h4>Your order has been received, we will be reviewing your images and will contact you soon. In the mean time here are your order details.</h4>
+      <td valign="top" style="vertical-align: top;text-align:center;" >
+        <h2>Thank you!</h2>
+        <h4>Your order has been received, we will be reviewing your images and will contact you soon. In the mean time here are your order details.</h4>
+      </td>
     </td>
   </tr>
 </table>
+
 <table cellpadding="10" cellspacing="0" border="0" align="center">
   <?php $meta = get_post_meta($fu_result['post_id']); ?>
   <?php if($meta): ?>
   <tr style="text-align:center;">
     <td colspan="2"><h2>Submitted Information</h2></td>
+
   </tr>
   <tr>
     <td style="vertical-align:top;">
