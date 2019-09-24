@@ -59,56 +59,41 @@ $obj = get_post( $fu_result['post_id'] );
   <tr>
     <td valign="top" style="vertical-align: top;text-align:center;" >
       <h2>Thank you!</h2>
-      <h4>Your order has been received, we will be contacting you soon. In the mean time here are your order details.</h4>
+      <h4>Your order has been received, we will be reviewing your images and will contact you soon. In the mean time here are your order details.</h4>
     </td>
   </tr>
 </table>
-
-<table cellpadding="0" cellspacing="0" border="0" align="center">
+<table cellpadding="10" cellspacing="0" border="0" align="center">
   <?php $meta = get_post_meta($fu_result['post_id']); ?>
   <?php if($meta): ?>
-  <tr>
-    <td><h3>Submitted Info</h3></td>
-
+  <tr style="text-align:center;">
+    <td colspan="2"><h2>Submitted Information</h2></td>
   </tr>
   <tr>
-    <td>
+    <td style="vertical-align:top;">
       <?php
       $i = 0;
       foreach($meta as $key=>$val)
       {
-        if (strpos($key, '_') === 0) {
-          echo "";
-        }
-        else{
+        if (strpos($key, '_') !== 0) {
           $newKey = str_replace('_', ' ', $key);
           $newKey = str_replace('post', 'project', $newKey);
           $newVal = str_replace('”', '', $val[0]);
           echo  '<h4><span style="text-transform:uppercase;">'.$newKey. '</span> : ' . $newVal . '</h4>';
         }
-        if($i === 6){
-          echo "</td><td>"
+        if($i === 7){
+          echo '</td style="vertical-align:top;"><td>';
         }
         $i++;
 
       }
       ?>
+
     </td>
   </tr>
  <?php endif; ?>
 </table>
-
-
-<?php endif ?>
-
-<table cellpadding="0" cellspacing="0" border="0" align="center">
-  <tr>
-    <td valign="top" style="vertical-align: top;">
-      <h4>Your image(s) will be reviewed, we will get in touch about pricing and any questions we may have.</h2>
-    </td>
-  </tr>
-</table>
-
+<?php endif; ?>
 
 
 <table cellpadding="0" cellspacing="0" border="0" align="center">
