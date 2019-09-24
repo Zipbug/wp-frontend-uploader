@@ -49,11 +49,17 @@ $obj = get_post( $fu_result['post_id'] );
 ?>
 
 <table cellpadding="0" cellspacing="0" border="0" align="center">
+  <tr style="background-color:#ffffff;">
+    <td>
+      <img src="https://carbonprintanddesign.pxpqa.com/wp-content/uploads/2019/01/logo.png" alt="Carbon Print and Design">
+    </td>
+  <tr>
   <tr>
     <td valign="top" style="vertical-align: top;text-align:center;" >
       <h2>Dear Admin</h2>
       <h4><?php echo wp_kses_post( $this->settings['admin_notification_text'] ); ?></h4>
-      <p>Someone uploaded a new UGC file, please moderate <a href="<?php echo get_edit_post_link($fu_result['post_id']); ?>">Here</a></p>
+      <p>Someone created a new order, please moderate <a href="<?php echo get_edit_post_link($fu_result['post_id']); ?>">Here</a></p>
+      <p>View all assosiated media <a href="<?php echo site_url(); ?>/wp-admin/upload.php?search=<?php urlencode( $obj->post_title ) ?>">Here.</a></p>
     </td>
   </tr>
 </table>
@@ -62,21 +68,28 @@ $obj = get_post( $fu_result['post_id'] );
   <?php $meta = get_post_meta($fu_result['post_id']); ?>
   <?php if($meta): ?>
   <tr>
-    <td><h3>Here is the submitted data</h3></td>
+    <td colspan="2"><h2>Submitted Information</h2></td>
 
   </tr>
   <tr>
     <td>
       <?php
+      $i = 0;
       foreach($meta as $key=>$val)
       {
         if (strpos($key, '_') === 0) {
           echo "";
         }
         else{
-          $newKey = preg_replace('/\s+/', '_', $key);
-          echo  '<h4><span style="text-transform:uppercase;">'.$newKey. '</span> : ' . $val[0] . '</h4>';
+          $newKey = str_replace(' ', '_', $key);
+          $newVal = str_replace('', '”', $val[0]);
+          echo  '<h4><span style="text-transform:uppercase;">'.$newKey. '</span> : ' . $newVal . '</h4>';
         }
+        if($i === 6){
+          echo "</td><td>"
+        }
+        $i++;
+
       }
       ?>
 
@@ -93,30 +106,23 @@ $obj = get_post( $fu_result['post_id'] );
 <table cellpadding="0" cellspacing="0" border="0" align="center">
   <tr>
     <td valign="top" style="vertical-align: top;">
-      <h2>Submitted Images</h2>
+      <h2>Submitted Image Link(s)</h2>
     </td>
   </tr>
 </table>
 
-  <?php foreach( $fu_result['media_ids'] as $media_id ):
-      $type = get_post_mime_type( $media_id );
+<table cellpadding="0" cellspacing="0" border="0" align="center">
+  <tr>
+<?php
+    $media = get_attached_media( '',  $fu_result['post_id'])
+?>
 
-      if ( ! $type || ! stristr( $type, 'image' ) )
-        continue;
+    <td valign="top" style="vertical-align: top;">
+    <?php print_r($media) ?>
+    </td>
 
-      $obj = get_post( $media_id );
-  ?>
-
-  <table cellpadding="0" cellspacing="0" border="0" align="center">
-    <tr>
-      <td valign="top" style="vertical-align: top;">
-       <?php echo wp_get_attachment_image( $media_id, 'large' ); ?>
-      </td>
-    </tr>
-  </table>
-
-  <?php endforeach; ?>
-
+  </tr>
+</table>
 <?php endif ?>
 
 

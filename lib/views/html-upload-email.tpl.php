@@ -49,8 +49,13 @@ $obj = get_post( $fu_result['post_id'] );
 ?>
 
 <table cellpadding="0" cellspacing="0" border="0" align="center">
+  <tr style="background-color:#ffffff;">
+    <td>
+      <img src="https://carbonprintanddesign.pxpqa.com/wp-content/uploads/2019/01/logo.png" alt="Carbon Print and Design">
+    </td>
   <tr>
-    <td valign="top" style="vertical-align: top;">
+  <tr>
+    <td valign="top" style="vertical-align: top;text-align:center;" >
       <h2>Thank you!</h2>
       <h4>Your order has been received, we will be contacting you soon. In the mean time here is your order (images not attached).</h4>
     </td>
@@ -67,15 +72,22 @@ $obj = get_post( $fu_result['post_id'] );
   <tr>
     <td>
       <?php
+      $i = 0;
       foreach($meta as $key=>$val)
       {
         if (strpos($key, '_') === 0) {
           echo "";
         }
         else{
-          $newKey = preg_replace('/\s+/', '_', $key);
-          echo  '<h4><span style="text-transform:uppercase;">'.$newKey. '</span> : ' . $val[0] . '</h4>';
+          $newKey = str_replace(' ', '_', $key);
+          $newVal = str_replace('', '”', $val[0]);
+          echo  '<h4><span style="text-transform:uppercase;">'.$newKey. '</span> : ' . $newVal . '</h4>';
         }
+        if($i === 6){
+          echo "</td><td>"
+        }
+        $i++;
+
       }
       ?>
     </td>
@@ -96,25 +108,18 @@ $obj = get_post( $fu_result['post_id'] );
   </tr>
 </table>
 
-  <?php foreach( $fu_result['media_ids'] as $media_id ):
-      $type = get_post_mime_type( $media_id );
+<table cellpadding="0" cellspacing="0" border="0" align="center">
+  <tr>
+<?php
+    $media = get_attached_media( '',  $fu_result['post_id'])
+?>
 
-      if ( ! $type || ! stristr( $type, 'image' ) )
-        continue;
+    <td valign="top" style="vertical-align: top;">
+    <?php print_r($media) ?>
+    </td>
 
-      $obj = get_post( $media_id );
-  ?>
-
-  <table cellpadding="0" cellspacing="0" border="0" align="center">
-    <tr>
-      <td valign="top" style="vertical-align: top;">
-       <?php echo wp_get_attachment_image( $media_id, 'large' ); ?>
-      </td>
-    </tr>
-  </table>
-
-  <?php endforeach; ?>
-
+  </tr>
+</table>
 <?php endif ?>
 
 
