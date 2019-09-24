@@ -61,7 +61,7 @@ $obj = get_post( $fu_result['post_id'] );
       <h2>Dear Admin</h2>
       <h4><?php echo wp_kses_post( $this->settings['admin_notification_text'] ); ?></h4>
       <p>Someone created a new order, please moderate <a href="<?php echo get_edit_post_link($fu_result['post_id']); ?>">Here</a></p>
-      <p>View all assosiated media <a href="<?php echo site_url(); ?>/wp-admin/upload.php?search=<?php echo esc_html( $obj->post_title ); ?>">Here.</a></p>
+      <p>View all associated media <a href="<?php echo site_url(); ?>/wp-admin/upload.php?search=<?php echo esc_html( $obj->post_title ); ?>">Here.</a></p>
     </td>
   </tr>
 </table>
