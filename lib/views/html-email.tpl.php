@@ -51,7 +51,7 @@ $obj = get_post( $fu_result['post_id'] );
 <table cellpadding="0" cellspacing="0" border="0" align="center">
   <tr style="background-color:#ffffff;">
     <td>
-      <img src="https://carbonprintanddesign.pxpqa.com/wp-content/uploads/2019/01/logo.png" alt="Carbon Print and Design">
+      <img src="https://carbonprintanddesign.pxpqa.com/wp-content/uploads/2019/01/logo.png" alt="Carbon Print and Design"/>
     </td>
   <tr>
   <tr>
@@ -59,7 +59,6 @@ $obj = get_post( $fu_result['post_id'] );
       <h2>Dear Admin</h2>
       <h4><?php echo wp_kses_post( $this->settings['admin_notification_text'] ); ?></h4>
       <p>Someone created a new order, please moderate <a href="<?php echo get_edit_post_link($fu_result['post_id']); ?>">Here</a></p>
-      <p>View all assosiated media <a href="<?php echo site_url(); ?>/wp-admin/upload.php?search=<?php urlencode( $obj->post_title ) ?>">Here.</a></p>
     </td>
   </tr>
 </table>
@@ -86,7 +85,7 @@ $obj = get_post( $fu_result['post_id'] );
           echo  '<h4><span style="text-transform:uppercase;">'.$newKey. '</span> : ' . $newVal . '</h4>';
         }
         if($i === 6){
-          echo "</td><td>"
+          echo "</td><td>";
         }
         $i++;
 
