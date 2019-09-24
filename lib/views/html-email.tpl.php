@@ -30,22 +30,22 @@
 <body style="width:100%; margin:0; padding:0; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%;">
 
 <!-- body wrapper -->
-<table cellpadding="0" cellspacing="0" border="0" style="margin:0; padding:0; width:100%; line-height: 100% !important;">
+<table cellpadding="0" cellspacing="0" border="0" style="margin:0; padding:0; width:100%; line-height: 100% !important;background:#dbdbdb;">
   <tr>
     <td valign="top">
       <!-- edge wrapper -->
-      <table cellpadding="0" cellspacing="0" border="0" align="center" width="600" style="background: #efefef;">
+      <table cellpadding="0" cellspacing="0" border="0" align="center" width="600" style="background: #fff;">
         <tr>
           <td valign="top">
             <!-- content wrapper -->
-            <table cellpadding="0" cellspacing="0" border="0" align="center"  width="560" >
+            <table cellpadding="0" cellspacing="0" border="0" align="center"  width="600" >
               <tr style="background-color:#ffffff;">
                 <td>
                   <img style="margin:15px auto;" src="https://carbonprintanddesign.pxpqa.com/wp-content/uploads/2019/01/logo.png" alt="Carbon Print and Design"/>
                 </td>
               <tr>
             </table>
-            <table cellpadding="15" cellspacing="0" border="0" align="center" width="560" style="background: #efefef;">
+            <table cellpadding="15" cellspacing="0" border="0" align="center" width="560" style="background: #fff;">
               <tr>
                 <td valign="top" style="vertical-align: top;">
 <!-- ///////////////////////////////////////////////////// -->
@@ -74,18 +74,18 @@ $obj = get_post( $fu_result['post_id'] );
 
   </tr>
   <tr>
-    <td>
+    <td style="vertical-align:top;">
       <?php
       $i = 0;
       foreach($meta as $key=>$val)
       {
         if (strpos($key, '_') !== 0) {
-          $newKey = str_replace(' ', '_', $key);
-          $newVal = str_replace('', '”', $val[0]);
+          $newKey = str_replace('_', ' ', $key);
+          $newVal = str_replace('”', '', $val[0]);
           echo  '<h4><span style="text-transform:uppercase;">'.$newKey. '</span> : ' . $newVal . '</h4>';
         }
-        if($i === 6){
-          echo "</td><td>";
+        if($i === 7){
+          echo '</td style="vertical-align:top;"><td>';
         }
         $i++;
 
@@ -101,7 +101,7 @@ $obj = get_post( $fu_result['post_id'] );
 
 <table cellpadding="0" cellspacing="0" border="0" align="center">
   <tr height="30">
-    <td valign="top" style="vertical-align: top; background: #efefef;" width="600" >
+    <td valign="top" style="vertical-align: top; background: #fff;" width="600" >
     </td>
   </tr>
 </table>

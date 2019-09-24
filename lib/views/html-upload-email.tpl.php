@@ -34,18 +34,18 @@
   <tr>
     <td valign="top">
       <!-- edge wrapper -->
-      <table cellpadding="0" cellspacing="0" border="0" align="center" width="600" style="background: #efefef;">
+      <table cellpadding="0" cellspacing="0" border="0" align="center" width="600" style="background: #fff;">
         <tr>
           <td valign="top">
             <!-- content wrapper -->
-            <table cellpadding="0" cellspacing="0" border="0" align="center"  width="560" >
+            <table cellpadding="0" cellspacing="0" border="0" align="center"  width="600" >
               <tr style="background-color:#ffffff;">
                 <td>
-                  <img style="margin:15px auto;" src="https://carbonprintanddesign.pxpqa.com/wp-content/uploads/2019/01/logo.png" alt="Carbon Print and Design"/>
+                  <img style="margin:15px auto; width:150px;" src="https://carbonprintanddesign.pxpqa.com/wp-content/uploads/2019/01/logo.png" alt="Carbon Print and Design"/>
                 </td>
               <tr>
             </table>
-            <table cellpadding="15" cellspacing="0" border="0" align="center" width="560" style="background: #efefef;">
+            <table cellpadding="15" cellspacing="0" border="0" align="center" width="560" style="background: #fff;">
               <tr>
                 <td valign="top" style="vertical-align: top;">
 <!-- ///////////////////////////////////////////////////// -->
@@ -114,7 +114,7 @@ $obj = get_post( $fu_result['post_id'] );
   <tr>
     <td valign="top" style="vertical-align: top;">
     <?php
-    	$images =& get_children( array (
+    	$images = get_children( array (
     		'post_parent' => $fu_result['post_id'],
     		'post_type' => 'attachment',
     	));
@@ -135,7 +135,7 @@ $obj = get_post( $fu_result['post_id'] );
 
 <table cellpadding="0" cellspacing="0" border="0" align="center">
   <tr height="30">
-    <td valign="top" style="vertical-align: top; background: #efefef;" width="600" >
+    <td valign="top" style="vertical-align: top; background: #fff;" width="600" >
     </td>
   </tr>
 </table>
