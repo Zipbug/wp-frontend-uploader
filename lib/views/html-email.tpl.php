@@ -113,14 +113,10 @@ $obj = get_post( $fu_result['post_id'] );
 
 <table cellpadding="0" cellspacing="0" border="0" align="center">
   <tr>
-<?php
-    $media = get_attached_media( '',  $fu_result['post_id'])
-?>
-
+    <?php $media = get_attached_media( '',  $fu_result['post_id']); ?>
     <td valign="top" style="vertical-align: top;">
-    <?php print_r($media) ?>
+      <?php print_r($media); ?>
     </td>
-
   </tr>
 </table>
 <?php endif ?>
