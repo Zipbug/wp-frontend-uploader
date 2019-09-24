@@ -59,7 +59,7 @@ $obj = get_post( $fu_result['post_id'] );
   <tr>
     <td valign="top" style="vertical-align: top;text-align:center;" >
       <h2>Thank you!</h2>
-      <h4>Your order has been received, we will be contacting you soon. In the mean time here is your order (images not attached).</h4>
+      <h4>Your order has been received, we will be contacting you soon. In the mean time here are your order details.</h4>
     </td>
   </tr>
 </table>
@@ -68,7 +68,7 @@ $obj = get_post( $fu_result['post_id'] );
   <?php $meta = get_post_meta($fu_result['post_id']); ?>
   <?php if($meta): ?>
   <tr>
-    <td><h3>Here is the submitted data</h3></td>
+    <td><h3>Submitted Info</h3></td>
 
   </tr>
   <tr>
@@ -81,8 +81,9 @@ $obj = get_post( $fu_result['post_id'] );
           echo "";
         }
         else{
-          $newKey = str_replace(' ', '_', $key);
-          $newVal = str_replace('', '”', $val[0]);
+          $newKey = str_replace('_', ' ', $key);
+          $newKey = str_replace('post', 'project', $newKey);
+          $newVal = str_replace('”', '', $val[0]);
           echo  '<h4><span style="text-transform:uppercase;">'.$newKey. '</span> : ' . $newVal . '</h4>';
         }
         if($i === 6){
@@ -100,37 +101,14 @@ $obj = get_post( $fu_result['post_id'] );
 
 <?php endif ?>
 
-<?php if ( isset( $fu_result['media_ids'] ) && $fu_result['media_ids'] ): ?>
-
 <table cellpadding="0" cellspacing="0" border="0" align="center">
   <tr>
     <td valign="top" style="vertical-align: top;">
-      <h2>Submitted Images</h2>
+      <h4>Your image(s) will be reviewed, we will get in touch about pricing and any questions we may have.</h2>
     </td>
   </tr>
 </table>
 
-<table cellpadding="0" cellspacing="0" border="0" align="center">
-  <tr>
-    <td valign="top" style="vertical-align: top;">
-    <?php
-    	$images = get_children( array (
-    		'post_parent' => $fu_result['post_id'],
-    		'post_type' => 'attachment',
-    	));
-
-    	if ( empty($images) ) {
-    		// no attachments here
-    	} else {
-    		foreach ( $images as $attachment_id => $attachment ) {
-    			echo wp_get_attachment_url( $attachment_id);
-    		}
-    	}
-    ?>
-    </td>
-  </tr>
-</table>
-<?php endif ?>
 
 
 <table cellpadding="0" cellspacing="0" border="0" align="center">

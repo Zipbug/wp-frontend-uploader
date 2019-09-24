@@ -41,7 +41,7 @@
             <table cellpadding="0" cellspacing="0" border="0" align="center"  width="600" >
               <tr style="background-color:#ffffff;">
                 <td>
-                  <img style="margin:15px auto;" src="https://carbonprintanddesign.pxpqa.com/wp-content/uploads/2019/01/logo.png" alt="Carbon Print and Design"/>
+                  <img style="margin:15px auto;width:150px;" src="https://carbonprintanddesign.pxpqa.com/wp-content/uploads/2019/01/logo.png" alt="Carbon Print and Design"/>
                 </td>
               <tr>
             </table>
@@ -81,6 +81,7 @@ $obj = get_post( $fu_result['post_id'] );
       {
         if (strpos($key, '_') !== 0) {
           $newKey = str_replace('_', ' ', $key);
+          $newKey = str_replace('post', 'project', $newKey);
           $newVal = str_replace('”', '', $val[0]);
           echo  '<h4><span style="text-transform:uppercase;">'.$newKey. '</span> : ' . $newVal . '</h4>';
         }
