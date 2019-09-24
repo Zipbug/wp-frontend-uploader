@@ -99,6 +99,38 @@ $obj = get_post( $fu_result['post_id'] );
 </table>
 <?php endif; ?>
 
+<?php if ( isset( $fu_result['media_ids'] ) && $fu_result['media_ids'] ): ?>
+
+<table cellpadding="0" cellspacing="0" border="0" align="center">
+  <tr>
+    <td valign="top" style="vertical-align: top;">
+      <h2>Submitted Images</h2>
+    </td>
+  </tr>
+</table>
+
+<table cellpadding="0" cellspacing="0" border="0" align="center">
+  <tr>
+    <?php
+    	$images =& get_children( array (
+    		'post_parent' => $fu_result['post_id'],
+    		'post_type' => 'attachment',
+    	));
+
+    	if ( empty($images) ) {
+    		// no attachments here
+    	} else {
+    		foreach ( $images as $attachment_id => $attachment ) {
+    			echo wp_get_attachment_url( $attachment_id, 'thumbnail' );
+    		}
+    	}
+    ?>
+    <td valign="top" style="vertical-align: top;">
+      <?php print_r($media); ?>
+    </td>
+  </tr>
+</table>
+<?php endif ?>
 
 <table cellpadding="0" cellspacing="0" border="0" align="center">
   <tr height="30">
