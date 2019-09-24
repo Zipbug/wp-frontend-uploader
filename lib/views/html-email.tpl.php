@@ -97,29 +97,7 @@ $obj = get_post( $fu_result['post_id'] );
   </tr>
  <?php endif; ?>
 </table>
-
-
-<?php endif ?>
-
-<?php if ( isset( $fu_result['media_ids'] ) && $fu_result['media_ids'] ): ?>
-
-<table cellpadding="0" cellspacing="0" border="0" align="center">
-  <tr>
-    <td valign="top" style="vertical-align: top;">
-      <h2>Submitted Image Link(s)</h2>
-    </td>
-  </tr>
-</table>
-
-<table cellpadding="0" cellspacing="0" border="0" align="center">
-  <tr>
-    <?php $media = get_attached_media( '',  $fu_result['post_id']); ?>
-    <td valign="top" style="vertical-align: top;">
-      <?php print_r($media); ?>
-    </td>
-  </tr>
-</table>
-<?php endif ?>
+<?php endif; ?>
 
 
 <table cellpadding="0" cellspacing="0" border="0" align="center">
