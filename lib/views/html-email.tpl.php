@@ -38,6 +38,13 @@
         <tr>
           <td valign="top">
             <!-- content wrapper -->
+            <table cellpadding="0" cellspacing="0" border="0" align="center"  width="560" >
+              <tr style="background-color:#ffffff;">
+                <td>
+                  <img style="margin:15px auto;" src="https://carbonprintanddesign.pxpqa.com/wp-content/uploads/2019/01/logo.png" alt="Carbon Print and Design"/>
+                </td>
+              <tr>
+            </table>
             <table cellpadding="15" cellspacing="0" border="0" align="center" width="560" style="background: #efefef;">
               <tr>
                 <td valign="top" style="vertical-align: top;">
@@ -49,24 +56,20 @@ $obj = get_post( $fu_result['post_id'] );
 ?>
 
 <table cellpadding="0" cellspacing="0" border="0" align="center">
-  <tr style="background-color:#ffffff;">
-    <td>
-      <img src="https://carbonprintanddesign.pxpqa.com/wp-content/uploads/2019/01/logo.png" alt="Carbon Print and Design"/>
-    </td>
-  <tr>
   <tr>
     <td valign="top" style="vertical-align: top;text-align:center;" >
       <h2>Dear Admin</h2>
       <h4><?php echo wp_kses_post( $this->settings['admin_notification_text'] ); ?></h4>
       <p>Someone created a new order, please moderate <a href="<?php echo get_edit_post_link($fu_result['post_id']); ?>">Here</a></p>
+      <p>View all assosiated media <a href="<?php echo site_url(); ?>/wp-admin/upload.php?search=<?php echo esc_html( $obj->post_title ); ?>">Here.</a></p>
     </td>
   </tr>
 </table>
 
-<table cellpadding="0" cellspacing="0" border="0" align="center">
+<table cellpadding="10" cellspacing="0" border="0" align="center">
   <?php $meta = get_post_meta($fu_result['post_id']); ?>
   <?php if($meta): ?>
-  <tr>
+  <tr style="text-align:center;">
     <td colspan="2"><h2>Submitted Information</h2></td>
 
   </tr>
@@ -76,10 +79,7 @@ $obj = get_post( $fu_result['post_id'] );
       $i = 0;
       foreach($meta as $key=>$val)
       {
-        if (strpos($key, '_') === 0) {
-          echo "";
-        }
-        else{
+        if (strpos($key, '_') !== 0) {
           $newKey = str_replace(' ', '_', $key);
           $newVal = str_replace('', '”', $val[0]);
           echo  '<h4><span style="text-transform:uppercase;">'.$newKey. '</span> : ' . $newVal . '</h4>';

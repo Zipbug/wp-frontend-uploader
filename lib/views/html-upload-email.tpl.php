@@ -38,6 +38,13 @@
         <tr>
           <td valign="top">
             <!-- content wrapper -->
+            <table cellpadding="0" cellspacing="0" border="0" align="center"  width="560" >
+              <tr style="background-color:#ffffff;">
+                <td>
+                  <img style="margin:15px auto;" src="https://carbonprintanddesign.pxpqa.com/wp-content/uploads/2019/01/logo.png" alt="Carbon Print and Design"/>
+                </td>
+              <tr>
+            </table>
             <table cellpadding="15" cellspacing="0" border="0" align="center" width="560" style="background: #efefef;">
               <tr>
                 <td valign="top" style="vertical-align: top;">
@@ -49,11 +56,6 @@ $obj = get_post( $fu_result['post_id'] );
 ?>
 
 <table cellpadding="0" cellspacing="0" border="0" align="center">
-  <tr style="background-color:#ffffff;">
-    <td>
-      <img src="https://carbonprintanddesign.pxpqa.com/wp-content/uploads/2019/01/logo.png" alt="Carbon Print and Design">
-    </td>
-  <tr>
   <tr>
     <td valign="top" style="vertical-align: top;text-align:center;" >
       <h2>Thank you!</h2>
@@ -110,9 +112,21 @@ $obj = get_post( $fu_result['post_id'] );
 
 <table cellpadding="0" cellspacing="0" border="0" align="center">
   <tr>
-    <?php $media = get_attached_media( '',  $fu_result['post_id']); ?>
     <td valign="top" style="vertical-align: top;">
-      <?php print_r($media); ?>
+    <?php
+    	$images =& get_children( array (
+    		'post_parent' => $fu_result['post_id'],
+    		'post_type' => 'attachment',
+    	));
+
+    	if ( empty($images) ) {
+    		// no attachments here
+    	} else {
+    		foreach ( $images as $attachment_id => $attachment ) {
+    			echo wp_get_attachment_url( $attachment_id);
+    		}
+    	}
+    ?>
     </td>
   </tr>
 </table>
