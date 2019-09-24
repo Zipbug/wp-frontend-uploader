@@ -74,7 +74,7 @@ $obj = get_post( $fu_result['post_id'] );
 
   </tr>
   <tr>
-    <td style="vertical-align:top;">
+    <td style="vertical-align:top;width:50%;">
       <?php
       $i = 0;
       foreach($meta as $key=>$val)
@@ -86,7 +86,7 @@ $obj = get_post( $fu_result['post_id'] );
           echo  '<h4><span style="text-transform:uppercase;">'.$newKey. '</span> : ' . $newVal . '</h4>';
         }
         if($i === 7){
-          echo '</td style="vertical-align:top;"><td>';
+          echo '</td style="vertical-align:top;width:50%;"><td>';
         }
         $i++;
 
@@ -121,8 +121,9 @@ $obj = get_post( $fu_result['post_id'] );
     		// no attachments here
     	} else {
     		foreach ( $images as $attachment_id => $attachment ) {
-    			echo wp_get_attachment_url( $attachment_id, 'thumbnail' );
-          echo "<br/>";
+          echo "<p>";
+          echo wp_get_attachment_url( $attachment_id, 'thumbnail' );
+          echo "<p/>";
     		}
     	}
     ?>
