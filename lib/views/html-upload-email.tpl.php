@@ -122,7 +122,7 @@ $obj = get_post( $fu_result['post_id'] );
     	} else {
     		foreach ( $images as $attachment_id => $attachment ) {
     			echo wp_get_attachment_url( $attachment_id, 'thumbnail' );
-          echo "<br/>"
+          echo "<br/>";
     		}
     	}
     ?>
